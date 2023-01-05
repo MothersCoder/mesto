@@ -1,0 +1,9 @@
+.header__logo {
+  display: inline;
+  position: relative;
+  width: 142px;
+  height: 33px;
+  margin: 0 0 41px 0;
+  opacity: 1;
+  z-index: 10;
+}
