@@ -1,6 +1,48 @@
 .profile__info {
   margin: 0;
   padding: 0;
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 127.5px 300px 24px minmax(100px, 374.5px);
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
+  "profile-photo profile-name edit-button add-button"
+  "profile-photo profile-description . add-button";
+  grid-auto-flow: row;
+  column-gap: 18px;
 }
+
+@media screen and (max-width: 860px) {
+  .profile__info {
+    display: grid;
+    grid-template-columns: 140.5px 300px 140.5px;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
+    "profile-photo profile-photo profile-photo"
+    ". profile-name edit-button"
+    ". profile-description ."
+    "add-button add-button add-button";
+    column-gap: 0;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .profile__info {
+    display: grid;
+    grid-template-columns: 40px 300px 40px;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
+    "profile-photo profile-photo profile-photo"
+    ". profile-name edit-button"
+    ". profile-description ."
+    "add-button add-button add-button";
+    column-gap: 0;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .profile__info {
+    grid-template-columns: 40px 202px 40px;
+  }
+}
+
+

@@ -3,6 +3,25 @@
   padding: 36.25px 0 47.25px 0;
   max-width: calc(100% - 400px);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+}
+
+@media screen and (max-width: 1070px) {
+  .profile {
+    max-width: calc(100% - 200px);
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .profile {
+    max-width: calc(100% - 50px);
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile {
+    max-width: calc(100% - 38px);
+  }
 }

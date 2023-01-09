@@ -1,0 +1,15 @@
+.like-link {
+  margin: 0;
+  padding: 0;
+}
+
+.like-link:hover {
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.like-link:active {
+  opacity: 1;
+  background-image: url("../../images/black-heart.svg");
+  background-repeat: no-repeat;
+}

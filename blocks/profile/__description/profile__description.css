@@ -1,5 +1,5 @@
 .profile__description {
-  margin: 0;
+  margin: 11px 0 0 6.375px;
   padding: 0;
   font-family: 'Inter', sans-serif;
   font-style: normal;
@@ -7,4 +7,19 @@
   font-size: 18px;
   line-height: 22px;
   color: #FFF;
+  grid-area: profile-description;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 860px) {
+  .profile__description {
+    font-family: 'Inter';
+    font-size: 14px;
+    line-height: 17px;
+    justify-self: center;
+    margin-top: 9px;
+    margin-left: 0;
+  }
 }

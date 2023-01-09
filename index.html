@@ -14,13 +14,22 @@
       <section class="profile">
         <div class="profile__info">
           <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Ваше фото">
-          <div class="profile__user-data">
-            <p class="profile__name">Жак-Ив Кусто</p>
-            <p class="profile__description">Исследователь океана</p>
+          <p class="profile__name">Жак-Ив Кусто</p>
+          <p class="profile__description">Исследователь океана</p>
+          <button class="profile__edit-button"></button>
+          <!---<a class="profile__edit-link" href="#"><img class="profile__edit-button" src="./images/penci-button.svg"></a>-->
+          <div class="popup">
+            <form class="popup__container">
+              <button class="popup__close"></button>
+              <p class="popup__title">Редактировать профиль</p>
+              <input class="input" type="text" name="firstname" placeholder="Имя">
+              <input class="input" type="text" name="about" placeholder="О себе">
+              <button class="popup__save">Сохранить</button>
+            </form>
           </div>
-          <img class="profile__edit-button" src="./images/penci-button.svg">
+          <bottom class="profile__add-button">+</bottom>
+          <!--- <a class="profile__add-link" href="#"><img class="profile__add-button" src="./images/add-button.svg"></a> --->
         </div>
-          <img class="profile__add-button" src="./images/add-button.svg">
       </section>
       <section class="places">
         <ul class="place">
@@ -28,42 +37,42 @@
             <img class="place__image" src="./images/place/place-karachaevsk.jpg" alt="Церковь, Карачаево-Черкесия">
             <div class="place__description">
               <h2 class="place__title">Карачаево-Черкесия</h2>
-              <img class="place__like" src="./images/place/place-like.svg">
+              <a class="like-link" href="#"><img class="place__like" src="./images/place/place-like.svg"></a>
             </div>
           </li>
           <li class="place__item">
             <img class="place__image" src="./images/place/place-elbrus.jpg" alt="Гора Эльбрус">
             <div class="place__description">
               <h2 class="place__title">Гора Эльбрус</h2>
-              <img class="place__like" src="./images/place/place-like.svg">
+              <a class="like-link" href="#"><img class="place__like" src="./images/place/place-like.svg"></a>
             </div>
           </li>
           <li class="place__item">
             <img class="place__image" src="./images/place/place-dombay.jpg" alt="Горы Домбайя">
             <div class="place__description">
               <h2 class="place__title">Домбай</h2>
-              <img class="place__like" src="./images/place/place-like.svg">
+              <a class="like-link" href="#"><img class="place__like" src="./images/place/place-like.svg"></a>
             </div>
           </li>
           <li class="place__item">
             <img class="place__image" src="./images/place/place-baikal.jpg" alt="Берег озера Байкал">
             <div class="place__description">
               <h2 class="place__title">Байкал</h2>
-              <img class="place__like" src="./images/place/place-like.svg">
+              <a class="like-link" href="#"><img class="place__like" src="./images/place/place-like.svg"></a>
             </div>
           </li>
           <li class="place__item">
             <img class="place__image" src="./images/place/place-kamchatka.jpg" alt="Камчатка">
             <div class="place__description">
               <h2 class="place__title">Камчатка</h2>
-              <img class="place__like" src="./images/place/place-like.svg">
+              <a class="like-link" href="#"><img class="place__like" src="./images/place/place-like.svg"></a>
             </div>
           </li>
           <li class="place__item">
             <img class="place__image" src="./images/place/place-karelia.jpg" alt="Леса в Карелии">
             <div class="place__description">
               <h2 class="place__title">Карелия</h2>
-              <img class="place__like" src="./images/place/place-like.svg">
+              <a class="like-link" href="#"><img class="place__like" src="./images/place/place-like.svg"></a>
             </div>
           </li>
         </ul>
