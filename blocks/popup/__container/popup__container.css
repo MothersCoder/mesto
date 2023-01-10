@@ -2,33 +2,31 @@
   display: flex;
   flex-direction: column;
   padding: 34px 36px 37px 36px;
-  position: fixed;
-  top: 200px;
-  left: 33.25%;
-  max-width: 430px;
+  position: absolute;
+  max-width: 358px;
   max-height: 330px;
   background: #FFF;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
+  margin: 0 auto;
+  top: 200px; left: 0; right: 0;
 }
 
 @media  screen and (max-width: 860px) {
   .popup__container {
     top: 174px;
-    left: 25%;
   }
 }
 
 @media  screen and (max-width: 630px) {
   .popup__container {
     padding: 22px;
-    left: calc(100vw - 75%);
+    width: 238px;
   }
 }
 
 @media  screen and (max-width: 440px) {
   .popup__container {
     top: 142px;
-    left: 19px;
   }
 }

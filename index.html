@@ -7,6 +7,15 @@
     <title>Mesto Russia</title>
   </head>
   <body class="page">
+    <div class="popup">
+      <form class="popup__container">
+        <button class="popup__close"></button>
+        <p class="popup__title">Редактировать профиль</p>
+        <input class="popup__input popup__input_type_name" type="text" name="firstname" placeholder="Имя">
+        <input class="popup__input popup__input_type_about" type="text" name="about" placeholder="О себе">
+        <button class="popup__save">Сохранить</button>
+      </form>
+    </div>
     <div class="main">
       <header class="header">
         <h1 class="header__title"><a href="#"><img class="header__logo" src="./images/header-logo.svg" alt="Логотип сайта &quot;Место (Россия)&quot;"></a></h1>
@@ -14,21 +23,10 @@
       <section class="profile">
         <div class="profile__info">
           <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Ваше фото">
-          <p class="profile__name">Жак-Ив Кусто</p>
-          <p class="profile__description">Исследователь океана</p>
+          <p class="profile__name">Nick</p>
+          <p class="profile__description">Как то так</p>
           <button class="profile__edit-button"></button>
-          <!---<a class="profile__edit-link" href="#"><img class="profile__edit-button" src="./images/penci-button.svg"></a>-->
-          <div class="popup">
-            <form class="popup__container">
-              <button class="popup__close"></button>
-              <p class="popup__title">Редактировать профиль</p>
-              <input class="input" type="text" name="firstname" placeholder="Имя">
-              <input class="input" type="text" name="about" placeholder="О себе">
-              <button class="popup__save">Сохранить</button>
-            </form>
-          </div>
           <bottom class="profile__add-button">+</bottom>
-          <!--- <a class="profile__add-link" href="#"><img class="profile__add-button" src="./images/add-button.svg"></a> --->
         </div>
       </section>
       <section class="places">
@@ -81,5 +79,6 @@
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
       </footer>
     </div>
+    <script src="./js/index.js"></script>
   </body>
 </html>
