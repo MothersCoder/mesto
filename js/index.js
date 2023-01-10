@@ -31,14 +31,14 @@ function handleFormSubmit (evt) {
     evt.preventDefault();
 
 
-    nameInput = nameInput.value;
-    jobInput = jobInput.value;
+    nameNew = nameInput.value;
+    descriptionNew = jobInput.value;
 
     let profileName = page.querySelector('.profile__name');
     let profileDescription = page.querySelector('.profile__description');
 
-    profileName.textContent = nameInput;
-    profileDescription.textContent = jobInput;
+    profileName.textContent = nameNew;
+    profileDescription.textContent = descriptionNew;
 
     closed();
 }
