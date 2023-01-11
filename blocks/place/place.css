@@ -7,3 +7,10 @@
   list-style: none;
   justify-content: center;
 }
+
+@media screen and (max-width: 400px) {
+  .place {
+    gap: 0;
+  }
+
+}
