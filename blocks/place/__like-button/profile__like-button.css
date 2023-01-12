@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
   border: none;
   background-color: #FFF;
+  cursor: pointer;
 }
 
 .place__like-button:hover {
@@ -17,6 +18,5 @@
 .place__like-button:active {
   opacity: 1;
   background-image: url("../../../images/black-heart.svg");
-  background-repeat: no-repeat;
 }
 

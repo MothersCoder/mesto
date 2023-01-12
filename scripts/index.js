@@ -2,7 +2,8 @@ let page = document.querySelector('.page');
 
 let editButton = page.querySelector('.profile__edit-button');
 
-let formElement = page.querySelector('.popup');
+let popup = page.querySelector('.popup')
+let formElement = page.querySelector('.popup__form');
 let closedButton = page.querySelector('.popup__close');
 
 let nameInput = page.querySelector('.popup__input_type_name');
@@ -14,13 +15,13 @@ let profileDescription = page.querySelector('.profile__description');
 function openModal() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
-  page.classList.add('page_shadow');
-  formElement.classList.add('popup_opened');
+  popup.classList.add('popup_shadow');
+  popup.classList.add('popup_opened');
 }
 
 function closeModal() {
-  formElement.classList.remove('popup_opened');
-  page.classList.remove('page_shadow');
+  popup.classList.remove('popup_opened');
+  popup.classList.remove('popup_shadow');
 }
 
 function handleFormSubmit (evt) {

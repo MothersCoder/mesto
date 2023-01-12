@@ -9,6 +9,7 @@
   height: 32px;
   border: none;
   background-color: rgb(255, 255, 255, .0);
+  cursor: pointer;
 }
 
 .popup__close:hover {
@@ -16,7 +17,7 @@
   transition: 0.5s;
 }
 
-@media  screen and (max-width: 350px) {
+@media  screen and (max-width: 400px) {
   .popup__close {
     width: 20px;
     height: 20px;

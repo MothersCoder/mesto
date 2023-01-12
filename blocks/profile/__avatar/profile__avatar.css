@@ -2,7 +2,6 @@
   border-radius: 50%;
   height: 120px;
   width: 120px;
-  grid-area: profile-photo;
 }
 
 @media screen and (max-width: 860px) {
