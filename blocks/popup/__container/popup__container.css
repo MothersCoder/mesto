@@ -9,21 +9,9 @@
   border-radius: 10px;
 }
 
-@media  screen and (max-width: 860px) {
-  .popup__container {
-    top: 174px;
-  }
-}
-
 @media  screen and (max-width: 630px) {
   .popup__container {
     padding: 22px;
     width: 238px;
-  }
-}
-
-@media  screen and (max-width: 440px) {
-  .popup__container {
-    top: 142px;
   }
 }

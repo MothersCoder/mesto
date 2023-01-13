@@ -15,13 +15,11 @@ let profileDescription = page.querySelector('.profile__description');
 function openModal() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
-  popup.classList.add('popup_shadow');
   popup.classList.add('popup_opened');
 }
 
 function closeModal() {
   popup.classList.remove('popup_opened');
-  popup.classList.remove('popup_shadow');
 }
 
 function handleFormSubmit (evt) {
