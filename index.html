@@ -23,48 +23,7 @@
       </section>
       <section class="places">
         <ul class="place">
-          <li class="place__item">
-            <img class="place__image" src="./images/place/place-karachaevsk.jpg" alt="Церковь, Карачаево-Черкесия">
-            <div class="place__description">
-              <h2 class="place__title">Карачаево-Черкесия</h2>
-              <button type="button" class="place__like-button"></button>
-            </div>
-          </li>
-          <li class="place__item">
-            <img class="place__image" src="./images/place/place-elbrus.jpg" alt="Гора Эльбрус">
-            <div class="place__description">
-              <h2 class="place__title">Гора Эльбрус</h2>
-              <button type="button" class="place__like-button"></button>
-            </div>
-          </li>
-          <li class="place__item">
-            <img class="place__image" src="./images/place/place-dombay.jpg" alt="Горы Домбайя">
-            <div class="place__description">
-              <h2 class="place__title">Домбай</h2>
-              <button type="button" class="place__like-button"></button>
-            </div>
-          </li>
-          <li class="place__item">
-            <img class="place__image" src="./images/place/place-baikal.jpg" alt="Берег озера Байкал">
-            <div class="place__description">
-              <h2 class="place__title">Байкал</h2>
-              <button type="button" class="place__like-button"></button>
-            </div>
-          </li>
-          <li class="place__item">
-            <img class="place__image" src="./images/place/place-kamchatka.jpg" alt="Камчатка">
-            <div class="place__description">
-              <h2 class="place__title">Камчатка</h2>
-              <button type="button" class="place__like-button"></button>
-            </div>
-          </li>
-          <li class="place__item">
-            <img class="place__image" src="./images/place/place-karelia.jpg" alt="Леса в Карелии">
-            <div class="place__description">
-              <h2 class="place__title">Карелия</h2>
-              <button type="button" class="place__like-button"></button>
-            </div>
-          </li>
+
         </ul>
       </section>
     </main>
@@ -82,6 +41,15 @@
         </form>
       </div>
     </div>
+    <template id="place__item">
+      <li class="place__item">
+        <img class="place__image" alt="">
+        <div class="place__description">
+          <h2 class="place__title"></h2>
+          <button type="button" class="place__like-button"></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
