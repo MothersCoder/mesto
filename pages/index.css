@@ -31,6 +31,7 @@
 @import url(../blocks/popupAdd/_opened/popupAdd_opened.css);
 @import url(../blocks/popupAdd/__close/popupAdd__close.css);
 @import url(../blocks/popupAdd/__create/popupAdd__create.css);
+@import url(../blocks/popupAdd/__form/popupAdd__form.css);
 
 @import url(../blocks/places/places.css);
 

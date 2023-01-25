@@ -79,15 +79,35 @@ initialCards.forEach(function (item) {
 const popupAdd = page.querySelector('.popupAdd');
 const addButton = page.querySelector('.profile__add-button');
 const closeAddFormButton = page.querySelector('.popupAdd__close');
-const createButton = page.querySelector('popupAdd__create');
 
-function openAddFormModal () {
+const addFormElement = page.querySelector('.popupAdd__form');
+const placeNameInput = page.querySelector('.popup__input_type_placeName');
+const photoLinkInput = page.querySelector('.popup__input_type_pictureLink');
+
+function openAddFormModal() {
   popupAdd.classList.add('popupAdd_opened');
 };
 
-function closeAddFormModal () {
+function closeAddFormModal() {
   popupAdd.classList.remove('popupAdd_opened');
+};
+
+function addNewPlace(evt) {
+  evt.preventDefault();
+  const placeElement = placeTamplate.querySelector('.place__item').cloneNode(true);
+  placeElement.querySelector('.place__image').src = photoLinkInput.value;
+  placeElement.querySelector('.place__image').alt = placeNameInput.value;
+  placeElement.querySelector('.place__title').textContent = placeNameInput.value;
+  placeList.prepend(placeElement);
+
+  placeNameInput.value = "";
+  photoLinkInput.value = "";
+
+  closeAddFormModal();
 };
 
 addButton.addEventListener('click', openAddFormModal);
 closeAddFormButton.addEventListener('click', closeAddFormModal);
+addFormElement.addEventListener('submit', addNewPlace);
+
+
