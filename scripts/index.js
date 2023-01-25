@@ -75,3 +75,19 @@ initialCards.forEach(function (item) {
   placeElement.querySelector('.place__title').textContent = item.name;
   placeList.prepend(placeElement);
 });
+
+const popupAdd = page.querySelector('.popupAdd');
+const addButton = page.querySelector('.profile__add-button');
+const closeAddFormButton = page.querySelector('.popupAdd__close');
+const createButton = page.querySelector('popupAdd__create');
+
+function openAddFormModal () {
+  popupAdd.classList.add('popupAdd_opened');
+};
+
+function closeAddFormModal () {
+  popupAdd.classList.remove('popupAdd_opened');
+};
+
+addButton.addEventListener('click', openAddFormModal);
+closeAddFormButton.addEventListener('click', closeAddFormModal);

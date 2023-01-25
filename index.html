@@ -41,6 +41,17 @@
         </form>
       </div>
     </div>
+    <div class="popupAdd">
+      <div class="popup__container">
+        <button type="button" class="popupAdd__close"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form" name="placeCard">
+          <input class="popup__input popup__input_type_place-name" type="text" name="firstname" placeholder="Название">
+          <input class="popup__input popup__input_type_picture-link" type="text" name="about" placeholder="Ссылка на картинку">
+          <button type="submit" class="popupAdd__create">Создать</button>
+        </form>
+      </div>
+    </div>
     <template id="place__item">
       <li class="place__item">
         <img class="place__image" alt="">

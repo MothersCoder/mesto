@@ -23,8 +23,14 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__save/popup__save.css);
+@import url(../blocks/popup/__create/popup__create.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__form/popup__form.css);
+
+@import url(../blocks/popupAdd/popupAdd.css);
+@import url(../blocks/popupAdd/_opened/popupAdd_opened.css);
+@import url(../blocks/popupAdd/__close/popupAdd__close.css);
+@import url(../blocks/popupAdd/__create/popupAdd__create.css);
 
 @import url(../blocks/places/places.css);
 
