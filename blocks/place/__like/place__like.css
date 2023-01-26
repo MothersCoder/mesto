@@ -1,4 +1,4 @@
-.place__like-button {
+.place__like {
   margin: 0;
   padding: 0;
   width: 22px;
@@ -10,13 +10,8 @@
   cursor: pointer;
 }
 
-.place__like-button:hover {
+.place__like:hover {
   opacity: 0.5;
   transition: 0.5s;
-}
-
-.place__like-button:active {
-  opacity: 1;
-  background-image: url("../../../images/black-heart.svg");
 }
 

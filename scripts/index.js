@@ -65,24 +65,14 @@ const initialCards = [
   }
 ];
 
-const placeTamplate = document.querySelector('#place__item').content;
-const placeList = document.querySelector('.place');
 
-initialCards.forEach(function (item) {
-  const placeElement = placeTamplate.querySelector('.place__item').cloneNode(true);
-  placeElement.querySelector('.place__image').src = item.link;
-  placeElement.querySelector('.place__image').alt = item.name;
-  placeElement.querySelector('.place__title').textContent = item.name;
-  placeList.prepend(placeElement);
-});
+const placeList = document.querySelector('.place');
 
 const popupAdd = page.querySelector('.popupAdd');
 const addButton = page.querySelector('.profile__add-button');
 const closeAddFormButton = page.querySelector('.popupAdd__close');
 
 const addFormElement = page.querySelector('.popupAdd__form');
-const placeNameInput = page.querySelector('.popup__input_type_placeName');
-const photoLinkInput = page.querySelector('.popup__input_type_pictureLink');
 
 function openAddFormModal() {
   popupAdd.classList.add('popupAdd_opened');
@@ -92,16 +82,35 @@ function closeAddFormModal() {
   popupAdd.classList.remove('popupAdd_opened');
 };
 
+function addPlace(titleValue, linkValue) {
+  const placeTamplate = document.querySelector('#place__item').content;
+  const placeElement = placeTamplate.querySelector('.place__item').cloneNode(true);
+  placeElement.querySelector('.place__image').src = linkValue;
+  placeElement.querySelector('.place__image').alt = titleValue;
+  placeElement.querySelector('.place__title').textContent = titleValue;
+
+  placeElement.querySelector('.place__like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('place__like_active');
+  });
+  placeList.prepend(placeElement);
+}
+
+initialCards.forEach(function (item) {
+  const title = item.name;
+  const link = item.link;
+
+  addPlace(title, link);
+});
+
 function addNewPlace(evt) {
   evt.preventDefault();
-  const placeElement = placeTamplate.querySelector('.place__item').cloneNode(true);
-  placeElement.querySelector('.place__image').src = photoLinkInput.value;
-  placeElement.querySelector('.place__image').alt = placeNameInput.value;
-  placeElement.querySelector('.place__title').textContent = placeNameInput.value;
-  placeList.prepend(placeElement);
+  const title = page.querySelector('.popup__input_type_placeName');
+  const link = page.querySelector('.popup__input_type_pictureLink');
 
-  placeNameInput.value = "";
-  photoLinkInput.value = "";
+  addPlace(title.value, link.value);
+
+  title.value = "";
+  link.value = "";
 
   closeAddFormModal();
 };
@@ -109,5 +118,3 @@ function addNewPlace(evt) {
 addButton.addEventListener('click', openAddFormModal);
 closeAddFormButton.addEventListener('click', closeAddFormModal);
 addFormElement.addEventListener('submit', addNewPlace);
-
-
