@@ -15,6 +15,7 @@ const profileDescription = page.querySelector('.profile__description');
 function openModal() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
+
   popup.classList.add('popup_opened');
 }
 
@@ -65,7 +66,6 @@ const initialCards = [
   }
 ];
 
-
 const placeList = document.querySelector('.place');
 
 const popupAdd = page.querySelector('.popupAdd');
@@ -92,6 +92,11 @@ function addPlace(titleValue, linkValue) {
   placeElement.querySelector('.place__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('place__like_active');
   });
+
+  placeElement.querySelector('.place__delete').addEventListener('click', function (evt) {
+    evt.target.parentElement.remove();
+  });
+
   placeList.prepend(placeElement);
 }
 
@@ -118,3 +123,4 @@ function addNewPlace(evt) {
 addButton.addEventListener('click', openAddFormModal);
 closeAddFormButton.addEventListener('click', closeAddFormModal);
 addFormElement.addEventListener('submit', addNewPlace);
+
