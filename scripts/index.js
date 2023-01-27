@@ -103,6 +103,7 @@ function openFullPhoto (element, linkValue, titleValue) {
     popupFullPhoto.querySelector('.popup__photo').src = linkValue;
     popupFullPhoto.querySelector('.popup__photo').alt = titleValue;
     popupFullPhoto.querySelector('.popup__caption').textContent = titleValue;
+    popupFullPhoto.style.background = 'rgb(0, 0, 0, 0.9)';
     openModal (popupFullPhoto);
   });
 };
