@@ -30,7 +30,7 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup__form_type_profile">
       <div class="popup__container">
         <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
@@ -41,22 +41,22 @@
         </form>
       </div>
     </div>
-    <div class="popupAdd">
+    <div class="popup popup__form_type_newcard">
       <div class="popup__container">
-        <button type="button" class="popupAdd__close"></button>
+        <button type="button" class="popup__close"></button>
         <h3 class="popup__title">Новое место</h3>
-        <form class="popupAdd__form" name="placeCard">
-          <input class="popup__input popup__input_type_placeName" type="text" name="place" placeholder="Название">
-          <input class="popup__input popup__input_type_pictureLink" type="text" name="link" placeholder="Ссылка на картинку">
-          <button type="submit" class="popupAdd__create">Создать</button>
+        <form class="popup__form" name="placeCard">
+          <input class="popup__input popup__input_type_placename" type="text" name="place" placeholder="Название">
+          <input class="popup__input popup__input_type_picturelink" type="text" name="link" placeholder="Ссылка на картинку">
+          <button type="submit" class="popup__save">Создать</button>
         </form>
       </div>
     </div>
-    <div class="popupImg">
-      <div class="popupImg__container">
-        <button type="button" class="popupImg__close"></button>
-        <img class="popupImg__photo" alt="">
-        <h2 class="popupImg__title"></h2>
+    <div class="popup popup__form_type_fullphoto">
+      <div class="popup__fullimg">
+        <button type="button" class="popup__close"></button>
+        <img class="popup__photo" alt="">
+        <h3 class="popup__caption"></h3>
       </div>
     </div>
     <template id="place__item">

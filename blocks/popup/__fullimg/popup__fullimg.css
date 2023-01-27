@@ -1,5 +1,5 @@
-.popupAdd__form {
+.popup__fullimg {
   display: flex;
   flex-direction: column;
-  max-width: 358px;
+  position: relative;
 }
