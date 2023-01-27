@@ -7,7 +7,7 @@ const addPlaceButton = page.querySelector('.profile__add-button');
 const profileName = page.querySelector('.profile__name');
 const profileDescription = page.querySelector('.profile__description');
 
-const popupProfile = page.querySelector('.popup__form_type_profile');
+const popupProfile = page.querySelector('.popup_type_profile');
 const profileFormElement = popupProfile.querySelector('.popup__form');
 const nameInput = popupProfile.querySelector('.popup__input_type_name');
 const jobInput = popupProfile.querySelector('.popup__input_type_about');
@@ -40,11 +40,11 @@ const initialCards = [
   }
 ];
 
-const popupNewCard = page.querySelector('.popup__form_type_newcard');
+const popupNewCard = page.querySelector('.popup_type_newcard');
 const addFormElement = popupNewCard.querySelector('.popup__form');
 const closeAddFormButton = popupNewCard.querySelector('.popup__close');
 
-const popupFullPhoto = page.querySelector('.popup__form_type_fullphoto');
+const popupFullPhoto = page.querySelector('.popup_type_fullphoto');
 const closePhotoButton = popupFullPhoto.querySelector('.popup__close');
 
 function openModal (form) {
