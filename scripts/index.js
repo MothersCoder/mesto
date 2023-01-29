@@ -45,6 +45,8 @@ const title = cardForm.querySelector('.popup__input_type_placename');
 const link = cardForm.querySelector('.popup__input_type_picturelink');
 
 const popupFullPhoto = page.querySelector('.popup_type_fullphoto');
+const photo = popupFullPhoto.querySelector('.popup__photo');
+const photoCaption = popupFullPhoto.querySelector('.popup__caption');
 
 const closeButtons = document.querySelectorAll('.popup__close');
 
@@ -101,25 +103,32 @@ function deletePlace (element) {
 
 function openFullPhoto (element, linkValue, titleValue) {
   element.querySelector('.place__image').addEventListener('click', function () {
-    const photo = popupFullPhoto.querySelector('.popup__photo');
     photo.src = linkValue;
     photo.alt = titleValue;
-    popupFullPhoto.querySelector('.popup__caption').textContent = titleValue;
+    photoCaption.textContent = titleValue;
     openModal (popupFullPhoto);
   });
 };
 
-function addPlace(titleValue, linkValue) {
-  const placeTamplate = document.querySelector('#place__item').content;
-  const placeElement = placeTamplate.querySelector('.place__item').cloneNode(true);
-  const image = placeElement.querySelector('.place__image');
-  image.src = linkValue;
-  image.alt = titleValue;
-  placeElement.querySelector('.place__title').textContent = titleValue;
+function createCard(titleValue, linkValue) {
+  const cardTamplate = document.querySelector('#place__item').content;
+  const cardElement = cardTamplate.querySelector('.place__item').cloneNode(true);
+  const cardImage = cardElement.querySelector('.place__image');
+  const cardTitle = cardElement.querySelector('.place__title');
 
-  likePlace (placeElement);
-  deletePlace (placeElement);
-  openFullPhoto (placeElement, linkValue, titleValue);
+  cardImage.src = linkValue;
+  cardImage.alt = titleValue;
+  cardTitle.textContent = titleValue;
+
+  likePlace (cardElement);
+  deletePlace (cardElement);
+  openFullPhoto (cardElement, linkValue, titleValue);
+
+  return cardElement;
+};
+
+function addPlace(titleValue, linkValue) {
+  const placeElement = createCard(titleValue, linkValue)
 
   placeList.prepend(placeElement);
 };
