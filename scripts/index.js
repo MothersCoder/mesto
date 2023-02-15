@@ -50,6 +50,10 @@ const photoCaption = popupFullPhoto.querySelector('.popup__caption');
 
 const closeButtons = document.querySelectorAll('.popup__close');
 
+const cardTemplate = document.querySelector('#place__item').content;
+
+const overlays = Array.from(page.querySelectorAll('.popup'));
+
 function openModal (popup) {
   popup.classList.add('popup_opened');
 };
@@ -86,33 +90,27 @@ function openAddFormModal() {
 };
 
 function closeAddFormModal() {
+  cardForm.reset();
   closeModal(popupNewCard);
 };
 
-function likePlace (element) {
-  element.querySelector('.place__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('place__like_active');
-  });
+function likePlace (evt) {
+  evt.target.classList.toggle('place__like_active');
 };
 
-function deletePlace (element) {
-  element.querySelector('.place__delete').addEventListener('click', function (evt) {
-    evt.target.parentElement.remove();
-  });
+function deletePlace (evt) {
+  evt.target.parentElement.remove();
 };
 
-function openFullPhoto (element, linkValue, titleValue) {
-  element.querySelector('.place__image').addEventListener('click', function () {
+function openFullPhoto (linkValue, titleValue) {
     photo.src = linkValue;
     photo.alt = titleValue;
     photoCaption.textContent = titleValue;
     openModal (popupFullPhoto);
-  });
 };
 
 function createCard(titleValue, linkValue) {
-  const cardTamplate = document.querySelector('#place__item').content;
-  const cardElement = cardTamplate.querySelector('.place__item').cloneNode(true);
+  const cardElement = cardTemplate.querySelector('.place__item').cloneNode(true);
   const cardImage = cardElement.querySelector('.place__image');
   const cardTitle = cardElement.querySelector('.place__title');
 
@@ -120,15 +118,15 @@ function createCard(titleValue, linkValue) {
   cardImage.alt = titleValue;
   cardTitle.textContent = titleValue;
 
-  likePlace (cardElement);
-  deletePlace (cardElement);
-  openFullPhoto (cardElement, linkValue, titleValue);
+  cardElement.querySelector('.place__like').addEventListener('click', likePlace);
+  cardElement.querySelector('.place__image').addEventListener('click', () => openFullPhoto(linkValue, titleValue));
+  cardElement.querySelector('.place__delete').addEventListener('click', deletePlace);
 
   return cardElement;
 };
 
 function addPlace(titleValue, linkValue) {
-  const placeElement = createCard(titleValue, linkValue)
+  const placeElement = createCard(titleValue, linkValue);
 
   placeList.prepend(placeElement);
 };
@@ -154,6 +152,21 @@ function closeFullPhoto () {
   closeModal(popupFullPhoto);
 };
 
+overlays.forEach((overlay) => {
+  overlay.addEventListener('click', (evt) => {
+    if (evt.target === overlay) {
+      closeModal(overlay);
+    };
+  });
+});
+
+page.addEventListener('keydown', function(evt) {
+  if (evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    closeModal(popup);
+  };
+});
+
 profileEditButton.addEventListener('click', openProfileModal);
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 
@@ -161,7 +174,10 @@ placeAddButton.addEventListener('click', openAddFormModal);
 cardForm.addEventListener('submit', addPlaceForm);
 
 closeButtons.forEach((button) => {
-   const popup = button.closest('.popup');
+  const popup = button.closest('.popup');
 
   button.addEventListener('click', () => closeModal (popup));
 });
+
+
+
