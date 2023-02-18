@@ -164,7 +164,6 @@ function addPlaceForm(evt) {
 
   addPlace(title.value, link.value);
 
-  cardForm.reset();
   closeAddFormModal();
 };
 
@@ -176,5 +175,8 @@ profileEditButton.addEventListener('click', openProfileModal);
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 
 placeAddButton.addEventListener('click', openAddFormModal);
-cardForm.addEventListener('submit', addPlaceForm);
+cardForm.addEventListener('submit', (evt) => {
+  addPlaceForm(evt);
+  cardForm.reset();
+});
 
