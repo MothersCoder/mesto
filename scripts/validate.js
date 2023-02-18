@@ -32,13 +32,20 @@ const isValid = (formElement, inputElement) => {
 
 const setEventListeners = (formElement, settings) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
-  const buttonElement = formElement.querySelector(settings.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement, settings);
+  const submitButtonSelector = formElement.querySelector(settings.submitButtonSelector);
+
+  toggleButtonState(inputList, submitButtonSelector, settings);
+
+  formElement.addEventListener('reset', () => {
+    setTimeout(() => {
+      toggleButtonState(inputList, submitButtonSelector, settings);
+    }, 0);
+  });
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
       isValid(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement, settings);
+      toggleButtonState(inputList, submitButtonSelector, settings);
     });
   });
 };
@@ -59,11 +66,13 @@ function hasInvalidInput (inputList) {
   });
 };
 
-function toggleButtonState (inputList, buttonElement, settings) {
+function toggleButtonState (inputList, submitButtonSelector, settings) {
   if (hasInvalidInput (inputList)) {
-    buttonElement.classList.add(settings.inactiveButtonClass);
+    submitButtonSelector.classList.add(settings.inactiveButtonClass);
+    submitButtonSelector.disabled = true;
   } else {
-    buttonElement.classList.remove(settings.inactiveButtonClass);
+    submitButtonSelector.classList.remove(settings.inactiveButtonClass);
+    submitButtonSelector.disabled = false;
   };
 };
 
