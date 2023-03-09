@@ -1,4 +1,5 @@
 import Card from './Card.js';
+import {FormValidator} from './FormValidator.js';
 
 const page = document.querySelector('.page');
 
@@ -17,7 +18,22 @@ const newCardSelectors = {
   likeActive: 'place__like_active',
   delete: '.place__delete',
   addButton: '.profile__add-button',
+
+  fullPhotoModal: '.popup_type_fullphoto',
+  photo: '.popup__photo',
+  photoCaption: '.popup__caption',
 }
+
+console.log(newCardSelectors.photo.src);
+
+const validationSettings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+};
 
 const profileEditButton = page.querySelector('.profile__edit-button');
 const profileName = page.querySelector('.profile__name');
@@ -64,6 +80,7 @@ const link = cardForm.querySelector(newCardSelectors.linkInput);
 const popupFullPhoto = page.querySelector('.popup_type_fullphoto');
 const photo = popupFullPhoto.querySelector('.popup__photo');
 const photoCaption = popupFullPhoto.querySelector('.popup__caption');
+
 
 function closeModalByEscape (evt) {
   if (evt.key === 'Escape') {
@@ -125,20 +142,13 @@ function closeAddFormModal() {
   closeModal(popupNewCard);
 };
 
-export function toggleLike (evt) {
-  evt.target.classList.toggle(newCardSelectors.likeActive);
-};
-
-export function deletePlace (evt) {
-  evt.target.closest('li').remove();
-};
-
 export function openFullPhoto (linkValue, titleValue) {
-    photo.src = linkValue;
-    photo.alt = titleValue;
-    photoCaption.textContent = titleValue;
-    openModal (popupFullPhoto);
-};
+  photo.src = linkValue;
+  photo.alt = titleValue;
+  photoCaption.textContent = titleValue;
+
+  openModal (popupFullPhoto);
+}
 
 function createCard(titleValue, linkValue) {
   const card = new Card(newCardSelectors, titleValue, linkValue)
@@ -174,3 +184,8 @@ cardForm.addEventListener('submit', (evt) => {
   addPlaceForm(evt);
   cardForm.reset();
 });
+
+const profileFormValidator = new FormValidator(validationSettings, popupProfile);
+profileFormValidator.enableValidation();
+const cardFormValidator = new FormValidator(validationSettings, popupNewCard);
+cardFormValidator.enableValidation();
