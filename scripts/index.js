@@ -24,8 +24,6 @@ const newCardSelectors = {
   photoCaption: '.popup__caption',
 }
 
-console.log(newCardSelectors.photo.src);
-
 const validationSettings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
