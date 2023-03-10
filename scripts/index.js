@@ -1,5 +1,6 @@
 import Card from './Card.js';
-import {FormValidator} from './FormValidator.js';
+import { FormValidator } from './FormValidator.js';
+import { newCardSelectors, validationSettings } from './selectors.js'
 
 const page = document.querySelector('.page');
 
@@ -7,31 +8,7 @@ const placeList = page.querySelector('.place');
 
 const popups = page.querySelectorAll('.popup');
 
-const newCardSelectors = {
-  titleInput: '.popup__input_type_placename',
-  linkInput: '.popup__input_type_picturelink',
-  template: '#place__item',
-  item: '.place__item',
-  image: '.place__image',
-  title: '.place__title',
-  like: '.place__like',
-  likeActive: 'place__like_active',
-  delete: '.place__delete',
-  addButton: '.profile__add-button',
 
-  fullPhotoModal: '.popup_type_fullphoto',
-  photo: '.popup__photo',
-  photoCaption: '.popup__caption',
-}
-
-const validationSettings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible',
-};
 
 const profileEditButton = page.querySelector('.profile__edit-button');
 const profileName = page.querySelector('.profile__name');
@@ -98,6 +75,9 @@ popups.forEach((popup) => {
   });
 });
 
+
+///const newCard = new Card(openPhotoModal );
+
 function openModal (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeModalByEscape);
@@ -140,7 +120,15 @@ function closeAddFormModal() {
   closeModal(popupNewCard);
 };
 
-export function openFullPhoto (linkValue, titleValue) {
+/* export function openFullPhoto (linkValue, titleValue) {
+  photo.src = linkValue;
+  photo.alt = titleValue;
+  photoCaption.textContent = titleValue;
+
+  openModal (popupFullPhoto);
+} */
+
+const openPhotoModal = (linkValue, titleValue) => {
   photo.src = linkValue;
   photo.alt = titleValue;
   photoCaption.textContent = titleValue;
@@ -149,7 +137,7 @@ export function openFullPhoto (linkValue, titleValue) {
 }
 
 function createCard(titleValue, linkValue) {
-  const card = new Card(newCardSelectors, titleValue, linkValue)
+  const card = new Card(newCardSelectors, titleValue, linkValue, openPhotoModal)
   return card.createCard();
 };
 

@@ -1,9 +1,11 @@
 .place__item {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 0;
   padding: 0;
-  min-width: 282px;
-  min-height: 361px;
+  width: 282px;
   background-color: #FFF;
   border-radius: 10px;
   text-overflow: ellipsis;
