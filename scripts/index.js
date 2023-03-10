@@ -8,8 +8,6 @@ const placeList = page.querySelector('.place');
 
 const popups = page.querySelectorAll('.popup');
 
-
-
 const profileEditButton = page.querySelector('.profile__edit-button');
 const profileName = page.querySelector('.profile__name');
 const profileDescription = page.querySelector('.profile__description');
@@ -56,7 +54,6 @@ const popupFullPhoto = page.querySelector('.popup_type_fullphoto');
 const photo = popupFullPhoto.querySelector('.popup__photo');
 const photoCaption = popupFullPhoto.querySelector('.popup__caption');
 
-
 function closeModalByEscape (evt) {
   if (evt.key === 'Escape') {
     const popup = document.querySelector('.popup_opened');
@@ -75,9 +72,6 @@ popups.forEach((popup) => {
   });
 });
 
-
-///const newCard = new Card(openPhotoModal );
-
 function openModal (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeModalByEscape);
@@ -89,7 +83,6 @@ function closeModal (popup) {
 };
 
 function openProfileModal() {
-
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
 
@@ -111,7 +104,6 @@ function handleProfileFormSubmit (evt) {
   closeProfileModal();
 };
 
-
 function openAddFormModal() {
   openModal(popupNewCard);
 };
@@ -120,15 +112,7 @@ function closeAddFormModal() {
   closeModal(popupNewCard);
 };
 
-/* export function openFullPhoto (linkValue, titleValue) {
-  photo.src = linkValue;
-  photo.alt = titleValue;
-  photoCaption.textContent = titleValue;
-
-  openModal (popupFullPhoto);
-} */
-
-const openPhotoModal = (linkValue, titleValue) => {
+const openPhotoModal = (titleValue, linkValue) => {
   photo.src = linkValue;
   photo.alt = titleValue;
   photoCaption.textContent = titleValue;

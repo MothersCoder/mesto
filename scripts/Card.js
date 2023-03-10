@@ -1,4 +1,3 @@
-//import { openFullPhoto } from './index.js';
 export default class Card {
 
   constructor (newCardSelectors, titleValue, linkValue, openPhotoModal) {
@@ -38,8 +37,4 @@ export default class Card {
 
     return this._cardElement;
   };
-
-
-
-
 }
