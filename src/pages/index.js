@@ -26,9 +26,8 @@ const nameInput = popupProfile.querySelector('.popup__input_type_name');
 const aboutInput = popupProfile.querySelector('.popup__input_type_about');
 
 function openProfileModal() {
-  nameInput.value = userData.getUserInfo()[0];
-  aboutInput.value = userData.getUserInfo()[1];
-
+  nameInput.value = userData.getUserInfo()['name'];
+  aboutInput.value = userData.getUserInfo()['about'];
   formDataProfile.open();
 };
 

@@ -8,10 +8,10 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    return [
-      this._userNameData.textContent,
-      this._userAboutData.textContent
-    ]
+    return {
+      name: this._userNameData.textContent,
+      about: this._userAboutData.textContent
+    }
   }
 
   setUserInfo(userInputValue, aboutInputValue) {
