@@ -2,48 +2,18 @@ import '../pages/index.css';
 
 import Card from '../components/Card.js';
 import Section from '../components/Section.js';
-import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
 import { FormValidator } from '../components/FormValidator.js';
-import { newCardSelectors, validationSettings, popupSelectors } from '../components/selectors.js'
+import { newCardSelectors, validationSettings, popupSelectors, initialCards } from '../utils/constants.js'
 
 const page = document.querySelector('.page');
-
-const placeList = page.querySelector('.place');
 
 const profileEditButton = page.querySelector('.profile__edit-button');
 
 const popupProfile = page.querySelector('.popup_type_profile');
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 const popupNewCard = page.querySelector('.popup_type_newcard');
 const placeAddButton = page.querySelector(newCardSelectors.addButton);
@@ -52,21 +22,23 @@ const title = cardForm.querySelector(newCardSelectors.titleInput);
 const link = cardForm.querySelector(newCardSelectors.linkInput);
 
 const userData = new UserInfo('.profile__name', '.profile__description')
+const nameInput = popupProfile.querySelector('.popup__input_type_name');
+const aboutInput = popupProfile.querySelector('.popup__input_type_about');
 
 function openProfileModal() {
-  userData.getUserInfo();
-  popupUserProfile.open()
+  nameInput.value = userData.getUserInfo()[0];
+  aboutInput.value = userData.getUserInfo()[1];
+
+  formDataProfile.open();
 };
 
 function openAddFormModal() {
-  popupNewPlaceCard.open();
+  formDataPlaceCard.open();
 };
 
 const handleCardClick = (titleValue, linkValue) => {
-  const fullPhoto = new PopupWithImage (popupSelectors.fullPhoto);
   fullPhoto.open(titleValue, linkValue);
-  fullPhoto.setEventListeners();
-}
+};
 
 function createCard(titleValue, linkValue) {
   const card = new Card(newCardSelectors, titleValue, linkValue, handleCardClick)
@@ -75,14 +47,13 @@ function createCard(titleValue, linkValue) {
 
 function addPlace(titleValue, linkValue) {
   const placeElement = createCard(titleValue, linkValue);
-  placeList.prepend(placeElement);
+  places.addItem(placeElement);
 };
 
 const places = new Section({
   items: initialCards,
   renderer: (item) => {
-    const place = new Card(newCardSelectors, item.name, item.link, handleCardClick)
-    const placeItem = place.createCard();
+    const placeItem = createCard(item.name, item.link)
     places.addItem(placeItem)
   }
   }, '.place'
@@ -90,7 +61,7 @@ const places = new Section({
 places.rendererItem();
 
 const handleProfileFormSubmit = () => {
-  userData.setUserInfo();
+  userData.setUserInfo(nameInput.value, aboutInput.value);
   formDataProfile.close();
 };
 
@@ -103,11 +74,6 @@ profileEditButton.addEventListener('click', openProfileModal);
 
 placeAddButton.addEventListener('click', openAddFormModal);
 
-const popupUserProfile = new Popup(popupSelectors.profile);
-popupUserProfile.setEventListeners();
-const popupNewPlaceCard = new Popup(popupSelectors.newPlaceCard);
-popupNewPlaceCard.setEventListeners();
-
 const profileFormValidator = new FormValidator(validationSettings, popupProfile);
 profileFormValidator.enableValidation();
 const cardFormValidator = new FormValidator(validationSettings, popupNewCard);
@@ -117,3 +83,6 @@ const formDataProfile = new PopupWithForm(popupSelectors.profile, handleProfileF
 formDataProfile.setEventListeners();
 const formDataPlaceCard = new PopupWithForm(popupSelectors.newPlaceCard, addPlaceForm);
 formDataPlaceCard.setEventListeners();
+
+const fullPhoto = new PopupWithImage (popupSelectors.fullPhoto);
+fullPhoto.setEventListeners();
