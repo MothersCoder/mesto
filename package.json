@@ -1,0 +1,27 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "![alt text](https://i.ytimg.com/vi/8ZaeIk_Ggo4/mqdefault.jpg) # Проект: Место ### Информационный ресурс посвящен интересным местам России Проект нацелен на создание платформы для обмена пользователями фотографиями из мест, которые они посетили в России. В дальнейшем появятся функции рейтингования загруженных фото и доработка back-end составляющей в части хранения данных о пользователях.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "author": "Nik S",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.5",
+    "webpack": "^5.76.2",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.1"
+  },
+  "dependencies": {
+    "core-js": "^3.29.1"
+  }
+}

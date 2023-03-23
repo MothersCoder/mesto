@@ -1,16 +1,16 @@
 export default class Card {
 
-  constructor (newCardSelectors, titleValue, linkValue, openPhotoModal) {
+  constructor (newCardSelectors, titleValue, linkValue, handleCardClick) {
     this._titleValue = titleValue;
     this._linkValue = linkValue;
     this._newCardSelectors = newCardSelectors;
     this._template = document.querySelector("#place__item").content;
-    this._openPhotoModal = openPhotoModal;
+    this._handleCardClick = handleCardClick;
     this._cardElement - this._cardElement;
   }
 
   _openFullSizePhoto = () => {
-    this._openPhotoModal(this._titleValue, this._linkValue);
+    this._handleCardClick(this._titleValue, this._linkValue);
     }
 
   _toggleLike = (evt) => {

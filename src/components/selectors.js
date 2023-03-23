@@ -9,7 +9,6 @@ export const newCardSelectors = {
   likeActive: 'place__like_active',
   delete: '.place__delete',
   addButton: '.profile__add-button',
-
   fullPhotoModal: '.popup_type_fullphoto',
   photo: '.popup__photo',
   photoCaption: '.popup__caption',
@@ -23,3 +22,9 @@ export const validationSettings = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible',
 };
+
+export const popupSelectors = {
+  profile: '.popup_type_profile',
+  newPlaceCard: '.popup_type_newcard',
+  fullPhoto: '.popup_type_fullphoto',
+}
