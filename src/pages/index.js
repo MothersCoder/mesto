@@ -17,9 +17,6 @@ const popupProfile = page.querySelector('.popup_type_profile');
 
 const popupNewCard = page.querySelector('.popup_type_newcard');
 const placeAddButton = page.querySelector(newCardSelectors.addButton);
-const cardForm = document.forms.placeCard;
-const title = cardForm.querySelector(newCardSelectors.titleInput);
-const link = cardForm.querySelector(newCardSelectors.linkInput);
 
 const userData = new UserInfo('.profile__name', '.profile__description')
 const nameInput = popupProfile.querySelector('.popup__input_type_name');
@@ -59,13 +56,14 @@ const places = new Section({
 );
 places.rendererItem();
 
-const handleProfileFormSubmit = () => {
-  userData.setUserInfo(nameInput.value, aboutInput.value);
+const handleProfileFormSubmit = (inputValues) => {
+  userData.setUserInfo(inputValues.firstname, inputValues.about);
+
   formDataProfile.close();
 };
 
-const addPlaceForm = () => {
-  addPlace(title.value, link.value);
+const addPlaceForm = (inputValues) => {
+  addPlace(inputValues.place, inputValues.link);
   formDataPlaceCard.close();
 };
 
@@ -80,6 +78,7 @@ cardFormValidator.enableValidation();
 
 const formDataProfile = new PopupWithForm(popupSelectors.profile, handleProfileFormSubmit);
 formDataProfile.setEventListeners();
+
 const formDataPlaceCard = new PopupWithForm(popupSelectors.newPlaceCard, addPlaceForm);
 formDataPlaceCard.setEventListeners();
 
