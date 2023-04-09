@@ -460,10 +460,38 @@ template {
   }
 }
 
-.profile__avatar {
+.profile__photo-container{
+  position: relative;
   border-radius: 50%;
   height: 120px;
   width: 120px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.profile__photo-container:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0, 0.8);
+  background-image: url(a086f758840ae814ecde.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.profile__photo-container:hover::after {
+  opacity: 0.8;
+}
+
+.profile__avatar {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 860px) {
@@ -954,6 +982,7 @@ template {
 }
 
 .place__like {
+  display: flex;
   margin: 0;
   padding: 0;
   width: 22px;
@@ -989,6 +1018,27 @@ template {
 .place__delete:hover {
   opacity: 0.5;
   transition: 0.5s;
+}
+
+.place__delete_hide {
+  display: none;
+}
+
+.place__like-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.place__like-count {
+  display: flex;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+
+  color: #000000;
 }
 
 .place__like_active {
