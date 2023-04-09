@@ -4,6 +4,7 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._callBackFunction = callBackFunction;
     this._popup = document.querySelector(popupSelector)
+    this._submitButton = this._popup.querySelector('.popup__button')
     this._inputList = this._popup.querySelectorAll('.popup__input');
     this._form = this._popup.querySelector('.popup__form');
   }
@@ -16,6 +17,14 @@ export default class PopupWithForm extends Popup {
 
     return this._inputValueList
   };
+
+  renderLoading(isLoading, textIsLoading, textLoaded) {
+    if (isLoading) {
+      this._submitButton.textContent = textIsLoading;
+    } else {
+      this._submitButton.textContent = textLoaded;
+    }
+  }
 
   setEventListeners = () => {
     super.setEventListeners();

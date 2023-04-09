@@ -17,8 +17,7 @@ import { newCardSelectors, validationSettings, popupSelectors, profileSelectors}
 const page = document.querySelector('.page');
 
 const profileEditButton = page.querySelector('.profile__edit-button');
-const userName = page.querySelector('.profile__name');
-const userAboutData = page.querySelector('.profile__description');
+
 const userPhotoContainer = page.querySelector('.profile__photo-container');
 
 const popupProfile = page.querySelector('.popup_type_profile');
@@ -38,13 +37,12 @@ const api = new Api({
   }
 });
 
-const userData = new UserInfo(profileSelectors)
-
 let userId = null;
 
-function openProfileModal() {
-  nameInput.value = userName.textContent;
-  aboutInput.value = userAboutData.textContent;
+const openProfileModal = () => {
+  const data = userData.getUserInfo()
+  nameInput.value = data.name;
+  aboutInput.value = data.about;
   formDataProfile.open();
 };
 
@@ -103,33 +101,24 @@ const places = new Section({
 );
 
 const handleProfileFormSubmit = (data) => {
-  renderLoading(true, popupProfile, 'Сохранение...', 'Сохранить');
+  formDataProfile.renderLoading(true, 'Сохранение...', 'Сохранить');
   api
     .addUserInfo({
       name: data.firstname,
       about: data.about
   })
   .then((data) => {
-    userData.setUserInfo(data.name, data.about, data.avatar);
-    userData.getUserInfo(data);
+    userData.setUserInfo(data);
     formDataProfile.close();
   })
   .finally(() => {
-    renderLoading(false, popupProfile, 'Сохранение...', 'Сохранить');
+    formDataProfile.renderLoading(false, 'Сохранение...', 'Сохранить');
   })
   .catch((err) => console.log(`${err}`))
 };
 
-const renderLoading = (isLoading, popup, textIsLoading, textLoaded) => {
-  if (isLoading) {
-    popup.querySelector('.popup__button').textContent = textIsLoading;
-  } else {
-    popup.querySelector('.popup__button').textContent = textLoaded;
-  }
-}
-
 const addPlaceForm = (inputValues) => {
-  renderLoading(true, popupNewCard, 'Создание...', 'Создать');
+  formDataPlaceCard.renderLoading(true, 'Создание...', 'Создать');
   api
   .addNewPlace({
     name: inputValues.place,
@@ -141,10 +130,11 @@ const addPlaceForm = (inputValues) => {
       formDataPlaceCard.close();
     })
     .finally(() => {
-      renderLoading(false, popupNewCard, 'Создание...', 'Создать');
+      formDataPlaceCard.renderLoading(false, 'Создание...', 'Создать');
     })
     .catch((err) => console.log(`${err}`))
 };
+const userData = new UserInfo(profileSelectors)
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
 .then(cardsAndUserData => {
@@ -154,20 +144,19 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
   userId = userInfo._id
 
   places.rendererItem(cardData, userId);
-  userData.getUserInfo(userInfo);
+  userData.setUserInfo(userInfo);
 })
 .catch((err) => {console.log(`${err}`)})
 
 const changePhoto = (photoLink) => {
-  renderLoading(true, popupNewPhoto, 'Сохранение...', 'Сохранить');
+  changePhotoForm.renderLoading(true, 'Сохранение...', 'Сохранить');
   api.loadNewUserPhoto({avatar: photoLink.link})
     .then((res) => {
       userData.setUserInfo(res);
-      userData.getUserInfo(res);
       changePhotoForm.close()
     })
     .finally(() => {
-      renderLoading(false, popupNewPhoto, 'Сохранение...', 'Сохранить');
+      changePhotoForm.renderLoading(false, 'Сохранение...', 'Сохранить');
     })
     .catch((err) => console.log(`${err}`))
 }

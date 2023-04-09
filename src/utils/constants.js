@@ -30,6 +30,7 @@ export const popupSelectors = {
   fullPhoto: '.popup_type_fullphoto',
   confirm: '.popup_type_confirm',
   changeUserPhoto: '.popup_type_newuserphoto',
+  button: '.popup__button'
 }
 
 export const profileSelectors = {

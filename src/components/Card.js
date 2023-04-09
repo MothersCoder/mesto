@@ -24,10 +24,6 @@ export default class Card {
     this._handleCardClick(this._cardData.name, this._cardData.link);
     }
 
-  _toggleLike = (evt) => {
-    evt.target.classList.toggle(this._newCardSelectors.likeActive);
-  };
-
   deletePlace = () => {
     this._cardElement.remove();
     this._cardElement = null;
@@ -83,7 +79,6 @@ export default class Card {
   };
 
   _setEventListeners() {
-    this._cardElement.querySelector(this._newCardSelectors.like).addEventListener('click', this._toggleLike);
     this._cardImage.addEventListener('click', this._openFullSizePhoto);
     this._cardElement.querySelector(this._newCardSelectors.delete).addEventListener('click', () => this._handleBinConfirmClick(this));
     this._like.addEventListener('click', () =>  {this._handleLikeClick(this)});

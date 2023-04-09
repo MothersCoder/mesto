@@ -4,18 +4,20 @@ export default class Api {
     this._headers = data.headers
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json()
+    }
+    return Promise.reject(`Ошибка: ${res.status}`)
+  }
+
   getUserInfo() {
     return fetch(`${this._baseUrl}users/me`, {
       method: 'GET',
       headers: this._headers
     })
 
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject(`Ошибка: ${res.status}`)
-    })
+    .then(this._checkResponse)
   }
 
   addUserInfo(data) {
@@ -25,12 +27,7 @@ export default class Api {
       body: JSON.stringify(data)
     })
 
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject(`Ошибка: ${res.status}`)
-    })
+    .then(this._checkResponse)
   }
 
   getInitialCards() {
@@ -38,12 +35,8 @@ export default class Api {
       method: 'GET',
       headers: this._headers
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`)
-      });
+
+    .then(this._checkResponse)
   }
 
   addNewPlace(data) {
@@ -53,12 +46,7 @@ export default class Api {
       body: JSON.stringify(data)
     })
 
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject(`Ошибка: ${res.status}`)
-    })
+    .then(this._checkResponse)
   }
 
   deletCard(idCard) {
@@ -67,12 +55,7 @@ export default class Api {
       headers: this._headers
     })
 
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject(`Ошибка: ${res.status}`)
-    })
+    .then(this._checkResponse)
   }
 
   like(idCard){
@@ -80,24 +63,16 @@ export default class Api {
       method: 'PUT',
       headers: this._headers
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject(`Ошибка: ${res.status}`)
-    })
+
+    .then(this._checkResponse)
   }
   deletLike(idCard){
     return fetch(`${this._baseUrl}cards/${idCard}/likes`, {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject(`Ошибка: ${res.status}`)
-    })
+
+    .then(this._checkResponse)
   }
 
   loadNewUserPhoto(data) {
@@ -106,29 +81,8 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify(data)
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject(`Ошибка: ${res.status}`)
-    })
-  }
 
-
-
-  addUserInfo(data) {
-    return fetch(`${this._baseUrl}users/me`, {
-      method: 'PATCH',
-      headers: this._headers,
-      body: JSON.stringify(data)
-    })
-
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject(`Ошибка: ${res.status}`)
-    })
+    .then(this._checkResponse)
   }
 
 }
