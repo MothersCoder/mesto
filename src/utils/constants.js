@@ -6,6 +6,7 @@ export const newCardSelectors = {
   image: '.place__image',
   title: '.place__title',
   like: '.place__like',
+  likeNum: '.place__like-count',
   likeActive: 'place__like_active',
   delete: '.place__delete',
   addButton: '.profile__add-button',
@@ -27,31 +28,12 @@ export const popupSelectors = {
   profile: '.popup_type_profile',
   newPlaceCard: '.popup_type_newcard',
   fullPhoto: '.popup_type_fullphoto',
+  confirm: '.popup_type_confirm',
+  changeUserPhoto: '.popup_type_newuserphoto',
 }
 
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+export const profileSelectors = {
+  name: '.profile__name',
+  about: '.profile__description',
+  avatar: '.profile__avatar'
+}
